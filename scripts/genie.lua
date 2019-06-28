@@ -22,15 +22,23 @@ solution "cor_scoreboard"
     return -- no action specified
   end
 
-  location(BUILD_DIR)
-  targetdir("../build/bin")
-
 	configuration { "osx" }
 		linkoptions {
 			"-framework Cocoa",
 			"-framework QuartzCore",
 			"-framework OpenGL",
 			"-weak_framework Metal",
+    }
+
+  configuration { "rpi" }
+		links {
+			"X11",
+			"brcmGLESv2",
+			"brcmEGL",
+			"bcm_host",
+			"vcos",
+			"vchiq_arm",
+			"pthread",
 		}
 
   project("cor_scoreboard")

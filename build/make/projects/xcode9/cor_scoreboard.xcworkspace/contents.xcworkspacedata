@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+	version = "1.0">
+	<Group
+		location = "container:"
+		name = "libs">
+		<FileRef
+			location = "group:bgfx.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:bimg.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:bimg_decode.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:bx.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:example-common.xcodeproj">
+		</FileRef>
+		<FileRef
+			location = "group:example-glue.xcodeproj">
+		</FileRef>
+	</Group>
+	<FileRef
+		location = "group:cor_scoreboard.xcodeproj">
+	</FileRef>
+</Workspace>
