@@ -1,3 +1,10 @@
+#include <algorithm>
+#include <dirent.h>
+#include <functional>
+#include <stdio.h>
+#include <string>
+#include <vector>
+
 #include "bgfx_utils.h"
 #include "common.h"
 
@@ -14,14 +21,10 @@
 
 #include "imgui/imgui.h"
 
-#include "gif_load.h"
-#include <dirent.h>
-#include <stdio.h>
-#include <string>
-#include <vector>
-#include "string_utils.h"
-#include "gif_utils.h"
 #include "font_utils.h"
+#include "gif_load.h"
+#include "gif_utils.h"
+#include "string_utils.h"
 
 namespace {
 
@@ -74,7 +77,7 @@ struct DeathFace {
 
   int num_frames;
 
-  TextBufferManager* bufferManager = nullptr;
+  TextBufferManager *bufferManager = nullptr;
   bgfx::TextureHandle texture;
   TextBufferHandle m_text;
   bgfx::IndexBufferHandle m_ibh;
@@ -93,11 +96,11 @@ struct DeathFace {
 const size_t MAX_FACES = 10;
 const size_t NUM_GROUPS = 3;
 
-typedef std::function<bool(const DeathFace &a, const DeathFace &b)> GroupSortFunc;
+typedef std::function<bool(const DeathFace &a, const DeathFace &b)>
+    GroupSortFunc;
 typedef std::function<bool(const DeathFace &a)> GroupFilterFunc;
 
 struct ScoreGroup {
-  int num_faces = 0;
   std::vector<DeathFace> faces;
   TextBufferHandle m_text;
 
@@ -148,34 +151,34 @@ public:
         m_fontManager->createFontByPixelSize(m_fontRobotronTtf, 0, 24);
     m_fontManager->preloadGlyph(
         m_fontRobotron,
-                                L"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.1234567890 :\n");
+        L"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.1234567890 :\n");
 
     s_texColor = bgfx::createUniform("s_texColor", bgfx::UniformType::Sampler);
     u_time = bgfx::createUniform("u_time", bgfx::UniformType::Vec4);
 
     m_timeOffset = bx::getHPCounter();
 
-    GroupSortFunc sortByScore = [](const DeathFace& a, const DeathFace& b) {
-      return a.score > b.score;
+    GroupSortFunc sortByScore = [](const DeathFace &a, const DeathFace &b) {
+      return a.score != b.score ? a.score > b.score : a.filename < b.filename;
     };
-    GroupFilterFunc eventFilter = [](const DeathFace& a) {
-      return a.location = "AFRU";
+    GroupFilterFunc filterByEvent = [](const DeathFace &a) {
+      return a.location == "AFRU";
     };
-    GroupSortFunc sortByDate = [](const DeathFace& a, const DeathFace& b) {
-      return a.date > b.date;
-    }
+    GroupSortFunc sortByDate = [](const DeathFace &a, const DeathFace &b) {
+      return a.date != b.date ? a.date > b.date : a.filename < b.filename;
+    };
 
     initGroup(&m_scores[0], "Most Recent", sortByDate);
     initGroup(&m_scores[1], "Teardown 2019", sortByScore, filterByEvent);
     initGroup(&m_scores[2], "All Time", sortByScore);
-    loadScores();
+    loadScores(true);
   }
 
   virtual int shutdown() override {
 
     for (int board = 0; board < 3; board++) {
-      for (int i = 0; i < MAX_FACES; i++) {
-        m_scores[board].faces[i].cleanup();
+      for (auto &face : m_scores[board].faces) {
+        face.cleanup();
       }
       m_textBufferManager->destroyTextBuffer(m_scores[board].m_text);
     }
@@ -199,7 +202,7 @@ public:
 
   bool update() override {
     if (!entry::processEvents(m_width, m_height, m_debug, m_reset,
-                               &m_mouseState)) {
+                              &m_mouseState)) {
 
       if (inputGetKeyState(entry::Key::KeyQ)) {
         return false;
@@ -214,10 +217,10 @@ public:
 
       const float curr_time = (now - m_timeOffset) / freq;
       static int lastFloor = 0;
-      int thisFloor = (int) bx::floor(curr_time);
+      int thisFloor = (int)bx::floor(curr_time);
       if ((thisFloor != lastFloor) && (thisFloor % 1 == 0)) {
         printf("Checking for new scores.\n");
-        loadScores();
+        loadScores(false);
         lastFloor = thisFloor;
       }
 
@@ -257,7 +260,7 @@ public:
 
   void renderScores(const ScoreGroup &group, float curr_time, float xoffset) {
     bgfx::setState(0 | BGFX_STATE_WRITE_RGB | BGFX_STATE_WRITE_A |
-                  BGFX_STATE_WRITE_Z | BGFX_STATE_MSAA);
+                   BGFX_STATE_WRITE_Z | BGFX_STATE_MSAA);
 
     float mtx[16];
     bx::mtxTranslate(mtx, xoffset + leftMarg * faceWidth, 0, 0);
@@ -265,12 +268,14 @@ public:
     m_textBufferManager->submitTextBuffer(group.m_text, 0);
 
     // Set vertex and index buffer.
-    for (int i = 0; i < group.num_faces; i++) {
+    for (int i = 0; i < group.faces.size(); i++) {
       bgfx::setVertexBuffer(0, group.faces[i].m_vbh);
       bgfx::setIndexBuffer(group.faces[i].m_ibh);
 
-      const float initialHeight = (i/2) * (faceHeight + textHeight) + headerHeight;
-      const float xColumnOffset = (i%2==0) ? leftMarg * faceWidth : faceWidth * columnSize;
+      const float initialHeight =
+          (i / 2) * (faceHeight + textHeight) + headerHeight;
+      const float xColumnOffset =
+          (i % 2 == 0) ? leftMarg * faceWidth : faceWidth * columnSize;
 
       bx::mtxTranslate(mtx, xoffset + xColumnOffset, initialHeight, 0);
       bgfx::setTransform(mtx);
@@ -287,103 +292,91 @@ public:
       // Submit primitive for rendering to view 0.
       bgfx::submit(0, m_program);
 
-      bx::mtxTranslate(mtx, xoffset + xColumnOffset, initialHeight + faceHeight, 0);
+      bx::mtxTranslate(mtx, xoffset + xColumnOffset, initialHeight + faceHeight,
+                       0);
       bgfx::setTransform(mtx);
       m_textBufferManager->submitTextBuffer(group.faces[i].m_text, 0);
     }
   }
 
-  void initGroup(ScoreGroup* group, const std::string& groupName, GroupSortFunc sortFunc, GroupFilterFunc filterFunc = nullptr) {
-    group->m_text = m_textBufferManager->createTextBuffer(FONT_TYPE_ALPHA, BufferType::Static);
-    m_textBufferManager->appendText(group->m_text, m_fontRobotron, groupName.c_str());
+  void initGroup(ScoreGroup *group, const std::string &groupName,
+                 GroupSortFunc sortFunc, GroupFilterFunc filterFunc = nullptr) {
+    group->m_text = m_textBufferManager->createTextBuffer(FONT_TYPE_ALPHA,
+                                                          BufferType::Static);
+    m_textBufferManager->appendText(group->m_text, m_fontRobotron,
+                                    groupName.c_str());
     group->sortFunc = sortFunc;
     if (filterFunc != nullptr) {
       group->filterFunc = filterFunc;
     } else {
-      group->filterFunc = [](const DeathFace& a) {
-        return true;
-      }
+      group->filterFunc = [](const DeathFace &a) { return true; };
     }
-    group->faces.reserve(MAX_FACES);
-//     group->num_faces = std::min(MAX_FACES, faces.size());
-//     for (int i = 0; i < group->num_faces; i++) {
-//       group->faces[i].cleanup();
-//       group->faces[i] = faces[i];
-// //      printf("%s %d\n", m_scores[2].faces[i].initials.c_str(),
-// //             m_scores[2].faces[i].score);
-//       loadFace(&(group->faces[i]), m_textBufferManager, m_fontRobotron);
-//     }
+    group->faces.reserve(MAX_FACES + 2);
   }
 
-  void loadScores() {
+  void loadScores(bool initialLoad) {
     std::vector<DeathFace> ret;
     auto dirp = opendir("data/");
     if (dirp == nullptr) {
-      printf("NULL SHIZ\n");
+      printf("Bad directory, setup the data/ symlink!\n");
       exit(0);
     }
     struct dirent *dp;
-    int fileCount = 0;
     while ((dp = readdir(dirp)) != NULL) {
       std::string filename(dp->d_name);
       auto s = SplitString(filename, '_');
       if (s.size() == 4) {
-        DeathFace f = {s[0], std::stoi(s[1]), s[2], SplitString(s[3], '.')[0], filename});
+        DeathFace face = {s[0], std::stoi(s[1]), s[2],
+                          SplitString(s[3], '.')[0], filename};
         for (int i = 0; i < NUM_GROUPS; i++) {
-          ScoreGroup* g = &m_scores[i];
+          ScoreGroup *g = &m_scores[i];
           if (g->filterFunc(face)) {
-            group->
+            auto insert = std::lower_bound(g->faces.begin(), g->faces.end(),
+                                           face, g->sortFunc);
+            bool couldInsert =
+                (g->faces.size() < MAX_FACES || insert != g->faces.end());
+            bool isEqual = insert->filename == face.filename;
+            if (couldInsert && !isEqual) {
+              if (!initialLoad) {
+                loadFace(&face);
+              }
+              g->faces.insert(insert, face);
+              if (g->faces.size() > MAX_FACES) {
+                g->faces.back().cleanup();
+                g->faces.pop_back();
+              }
+            }
           }
         }
       }
-      fileCount++;
     }
     closedir(dirp);
-   if (fileCount == m_lastFileCount) {
-     return;
-   }
-   m_lastFileCount = fileCount;
-
-    // All time
-    std::sort(ret.begin(), ret.end(),
-              [](const DeathFace &a, const DeathFace &b) {
-                return a.score > b.score;
-              });
-    initGroup(&m_scores[2], "All Time", ret);
-
-    std::vector<DeathFace> event;
-    std::copy_if(ret.begin(), ret.end(), std::back_inserter(event),
-                 [](const DeathFace &a) {
-                   return a.location == "AFRU";
-                 });
-    std::sort(event.begin(), event.end(),
-              [](const DeathFace &a, const DeathFace &b) {
-                return a.score > b.score;
-              });
-    initGroup(&m_scores[1], "Teardown 2019", event);
-
-    std::sort(
-        ret.begin(), ret.end(),
-        [](const DeathFace &a, const DeathFace &b) { return a.date > b.date; });
-    initGroup(&m_scores[0], "Most Recent", ret);
-
-    printf("Loaded new scores.\n");
+    if (initialLoad) {
+      for (int i = 0; i < NUM_GROUPS; i++) {
+        ScoreGroup *g = &m_scores[i];
+        for (auto &f : g->faces) {
+          loadFace(&f);
+        }
+      }
+    }
   }
 
-  void loadFace(DeathFace *face, TextBufferManager *tb, FontHandle font) {
+  void loadFace(DeathFace *face) {
     face->texture = loadGif("data/" + face->filename, &(face->num_frames));
-    face->m_text = tb->createTextBuffer(FONT_TYPE_ALPHA, BufferType::Static);
-    tb->setPenPosition(face->m_text, 0.0f, 0.0f);
-    tb->setTextColor(face->m_text, 0x00FFFFFF);
-    tb->appendText(face->m_text, font,
-                  (face->initials + "\n" + std::to_string(face->score)).c_str());
+    face->m_text = m_textBufferManager->createTextBuffer(FONT_TYPE_ALPHA,
+                                                         BufferType::Static);
+    m_textBufferManager->setPenPosition(face->m_text, 0.0f, 0.0f);
+    m_textBufferManager->setTextColor(face->m_text, 0x00FFFFFF);
+    m_textBufferManager->appendText(
+        face->m_text, m_fontRobotron,
+        (face->initials + "\n" + std::to_string(face->score)).c_str());
     face->m_vbh = bgfx::createVertexBuffer(
         bgfx::makeRef(s_planeVertices, sizeof(s_planeVertices)),
         PosTexcoordVertex::ms_decl);
     // Create static index buffer.
     face->m_ibh = bgfx::createIndexBuffer(
         bgfx::makeRef(s_planeIndices, sizeof(s_planeIndices)));
-    face->bufferManager = tb;
+    face->bufferManager = m_textBufferManager;
   }
 
   entry::MouseState m_mouseState;
@@ -406,12 +399,9 @@ public:
 
   int64_t m_timeOffset;
 
-  int m_lastFileCount = 0;
-
   ScoreGroup m_scores[NUM_GROUPS];
 };
 
 } // namespace
 
-ENTRY_IMPLEMENT_MAIN(Scoreboard, "41-cor",
-                     "Church of Robotron Scoreboard");
+ENTRY_IMPLEMENT_MAIN(Scoreboard, "41-cor", "Church of Robotron Scoreboard");
