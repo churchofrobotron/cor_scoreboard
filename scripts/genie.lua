@@ -22,25 +22,6 @@ solution "cor_scoreboard"
     return -- no action specified
   end
 
-	configuration { "osx" }
-		linkoptions {
-			"-framework Cocoa",
-			"-framework QuartzCore",
-			"-framework OpenGL",
-			"-weak_framework Metal",
-    }
-
-  configuration { "rpi" }
-		links {
-			"X11",
-			"brcmGLESv2",
-			"brcmEGL",
-			"bcm_host",
-			"vcos",
-			"vchiq_arm",
-			"pthread",
-		}
-
   project("cor_scoreboard")
     uuid(os.uuid("cor_scoreboard"))
     kind "WindowedApp"
@@ -74,6 +55,25 @@ solution "cor_scoreboard"
 		"example-common",
 		-- "example-glue",
   }
+
+	configuration { "osx" }
+		linkoptions {
+			"-framework Cocoa",
+			"-framework QuartzCore",
+			"-framework OpenGL",
+			"-weak_framework Metal",
+    }
+
+  configuration { "rpi" }
+		links {
+			"X11",
+			"brcmGLESv2",
+			"brcmEGL",
+			"bcm_host",
+			"vcos",
+			"vchiq_arm",
+			"pthread",
+		}
 
   dofile(path.join(BGFX_DIR, "scripts/bgfx.lua"))
   group "libs"

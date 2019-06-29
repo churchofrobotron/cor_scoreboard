@@ -58,7 +58,7 @@ ifeq ($(config),debug)
   ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../thirdparty/lib/rpi" -L"../../../../../../../../../../opt/vc/lib" -L"." -Wl,--gc-sections
   LIBDEPS            +=
   LDDEPS             +=
-  LIBS               += $(LDDEPS) -lrt -ldl -lX11 -lbrcmGLESv2 -lbrcmEGL -lbcm_host -lvcos -lvchiq_arm -lpthread
+  LIBS               += $(LDDEPS) -lrt -ldl
   EXTERNAL_LIBS      +=
   LINKOBJS            = $(OBJECTS)
   LINKCMD             = $(AR)  -rcs $(TARGET)
@@ -101,7 +101,7 @@ ifeq ($(config),release)
   ALL_LDFLAGS        += $(LDFLAGS) -L"../../../../thirdparty/lib/rpi" -L"../../../../../../../../../../opt/vc/lib" -L"." -Wl,--gc-sections
   LIBDEPS            +=
   LDDEPS             +=
-  LIBS               += $(LDDEPS) -lrt -ldl -lX11 -lbrcmGLESv2 -lbrcmEGL -lbcm_host -lvcos -lvchiq_arm -lpthread
+  LIBS               += $(LDDEPS) -lrt -ldl
   EXTERNAL_LIBS      +=
   LINKOBJS            = $(OBJECTS)
   LINKCMD             = $(AR)  -rcs $(TARGET)
