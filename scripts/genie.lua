@@ -66,6 +66,11 @@ solution "cor_scoreboard"
 
   configuration { "rpi" }
 		links {
+      "bx",
+      "bimg",
+      "bimg_decode",
+      "bgfx",
+      "example-common",
 			"X11",
 			"brcmGLESv2",
 			"brcmEGL",
