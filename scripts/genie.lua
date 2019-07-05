@@ -13,7 +13,7 @@ solution "cor_scoreboard"
   BIMG_DIR = path.join(THIRD_PARTY_DIR, "bimg")
   BGFX_DIR = path.join(THIRD_PARTY_DIR, "bgfx")
   EXAMPLE_FRAMEWORK_DIR = path.join(BGFX_DIR, "examples")
-  BUILD_DIR = "../build/make"
+  BUILD_DIR = "../build"
 
   language "C++"
 
@@ -48,15 +48,14 @@ solution "cor_scoreboard"
   }
 
   links {
-    "bx",
-    "bimg",
-    "bimg_decode",
+    "example-common",
     "bgfx",
-		"example-common",
-		-- "example-glue",
+    "bimg_decode",
+    "bimg",
+    "bx",
   }
 
-	configuration { "osx" }
+  configuration { "osx" }
 		linkoptions {
 			"-framework Cocoa",
 			"-framework QuartzCore",
@@ -66,11 +65,6 @@ solution "cor_scoreboard"
 
   configuration { "rpi" }
 		links {
-      "bx",
-      "bimg",
-      "bimg_decode",
-      "bgfx",
-      "example-common",
 			"X11",
 			"brcmGLESv2",
 			"brcmEGL",
@@ -78,7 +72,9 @@ solution "cor_scoreboard"
 			"vcos",
 			"vchiq_arm",
 			"pthread",
-		}
+    }
+
+  configuration {}
 
   dofile(path.join(BGFX_DIR, "scripts/bgfx.lua"))
   group "libs"
@@ -89,6 +85,7 @@ solution "cor_scoreboard"
   dofile(path.join(BGFX_DIR, "scripts/example-common.lua"))
 
   configuration {}
+
   defines {
     "ENTRY_DEFAULT_WIDTH=768",
     "ENTRY_DEFAULT_HEIGHT=668"

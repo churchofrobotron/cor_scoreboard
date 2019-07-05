@@ -1,0 +1,585 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C1BA9E7FADA1607756F2C694 /* font.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 902F4679FC1255B9051683F5 /* font.cpp */; };
+		186FA91804EC9C5B2D699D6F /* font_utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 0709A0B273C20A5DFC212537 /* font_utils.h */; };
+		AF3978661BC9395124C51A69 /* gif_load.h in Headers */ = {isa = PBXBuildFile; fileRef = 57FE3EC3C36C94420C564F42 /* gif_load.h */; };
+		02F7CB9CEE73BFDF17F1BFF3 /* gif_utils.h in Headers */ = {isa = PBXBuildFile; fileRef = D13E96D13DF8007CC6571B56 /* gif_utils.h */; };
+		2581056E91E698F41ABF3ACD /* string_utils.h in Headers */ = {isa = PBXBuildFile; fileRef = B442230DA094FAFC89B3370D /* string_utils.h */; };
+		F5B2C0D961293CCBAA685DA1 /* libexample-commonDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4AD5E5C90708F8039BEA0FC /* libexample-commonDebug.a */; };
+		6F9B3E9CDB0B4115A42ABB9D /* libbgfxDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EC9F9CD0A46ED1033C3ED24 /* libbgfxDebug.a */; };
+		CDDC4E6039F2BCB6C2AE9617 /* libbimg_decodeDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DC0860A3C80AA4B3B18D9AAC /* libbimg_decodeDebug.a */; };
+		4706F073B3CEBDF77C5FC609 /* libbimgDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F6AA2C7DE27F74300B2FB42C /* libbimgDebug.a */; };
+		7867EE2DE44ED923ED3CDB9F /* libbxDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0742D1E3F3D5C68B5C9A2040 /* libbxDebug.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A3D067008F93982438E1A9A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 68380D2A54CF4FDFFD83C6DF /* example-common.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9D8CE35A09FB38DA52E4F3D9;
+			remoteInfo = "libexample-commonDebug.a";
+		};
+		3D8E28FC29515920D29E6A9C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 68380D2A54CF4FDFFD83C6DF /* example-common.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = E3DC407FCF2D2CC1F8911A83;
+			remoteInfo = "libexample-commonDebug.a";
+		};
+		0D13C317F9E70ACB22974AC7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 12E189F0FE89F11F27200D9F /* bgfx.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 02DC17D86E13606F771DC492;
+			remoteInfo = "libbgfxDebug.a";
+		};
+		674B7DE35320C5967CCF0493 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 12E189F0FE89F11F27200D9F /* bgfx.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = A853C66B944DEFBD7DBA85CE;
+			remoteInfo = "libbgfxDebug.a";
+		};
+		630356AF4F059ABF388890B8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 08A29302F4771A00DD213553 /* bimg_decode.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7D6367F06989315752CFB622;
+			remoteInfo = "libbimg_decodeDebug.a";
+		};
+		9D0854B8890A98C8728D8EC1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 08A29302F4771A00DD213553 /* bimg_decode.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = C35735362F701C60F81CACF9;
+			remoteInfo = "libbimg_decodeDebug.a";
+		};
+		BD72A0E3A947E896D2F62793 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C2909A85AE3902B5D7CF1D34 /* bimg.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5ACAB1E8C601FA7FCF0B5EA3;
+			remoteInfo = "libbimgDebug.a";
+		};
+		17AB5AAF0380A2622C2FE25E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C2909A85AE3902B5D7CF1D34 /* bimg.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 00D72F0FECD05861D53DEF71;
+			remoteInfo = "libbimgDebug.a";
+		};
+		13B40413FFF2AE8EA8758BC0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 580F72C64422721FED0B4F0C /* bx.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D5D335834140F17D0A3489DB;
+			remoteInfo = "libbxDebug.a";
+		};
+		2D68BDB119A7672DC229445F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 580F72C64422721FED0B4F0C /* bx.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 1B1D4BC607ACD48FB0CAE88A;
+			remoteInfo = "libbxDebug.a";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		902F4679FC1255B9051683F5 /* font.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "font.cpp"; path = "font.cpp"; sourceTree = "<group>"; };
+		0709A0B273C20A5DFC212537 /* font_utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "font_utils.h"; path = "font_utils.h"; sourceTree = "<group>"; };
+		57FE3EC3C36C94420C564F42 /* gif_load.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "gif_load.h"; path = "gif_load.h"; sourceTree = "<group>"; };
+		D13E96D13DF8007CC6571B56 /* gif_utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "gif_utils.h"; path = "gif_utils.h"; sourceTree = "<group>"; };
+		B442230DA094FAFC89B3370D /* string_utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "string_utils.h"; path = "string_utils.h"; sourceTree = "<group>"; };
+		E431233B503F5121D9254D0C /* cor_scoreboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "cor_scoreboard.app"; path = "cor_scoreboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		68380D2A54CF4FDFFD83C6DF /* example-common.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "example-common.xcodeproj"; path = "example-common.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		12E189F0FE89F11F27200D9F /* bgfx.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "bgfx.xcodeproj"; path = "bgfx.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		08A29302F4771A00DD213553 /* bimg_decode.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "bimg_decode.xcodeproj"; path = "bimg_decode.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		C2909A85AE3902B5D7CF1D34 /* bimg.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "bimg.xcodeproj"; path = "bimg.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		580F72C64422721FED0B4F0C /* bx.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "bx.xcodeproj"; path = "bx.xcodeproj"; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B9AD9E4C25261399EE9A24AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5B2C0D961293CCBAA685DA1 /* libexample-commonDebug.a in Frameworks */,
+				6F9B3E9CDB0B4115A42ABB9D /* libbgfxDebug.a in Frameworks */,
+				CDDC4E6039F2BCB6C2AE9617 /* libbimg_decodeDebug.a in Frameworks */,
+				4706F073B3CEBDF77C5FC609 /* libbimgDebug.a in Frameworks */,
+				7867EE2DE44ED923ED3CDB9F /* libbxDebug.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		96B0E3AD021F392D4B08F42C /* cor_scoreboard */ = {
+			isa = PBXGroup;
+			children = (
+				B8CA6B1AA4C4946C8D312B7D /* src */,
+				D6DDA5B7C29895636B500EAE /* Products */,
+				EDA676F5D96166A18219DFEB /* Projects */,
+			);
+			name = "cor_scoreboard";
+			path = ".";
+			sourceTree = "<group>";
+		};
+		B8CA6B1AA4C4946C8D312B7D /* src */ = {
+			isa = PBXGroup;
+			children = (
+				902F4679FC1255B9051683F5 /* font.cpp */,
+				0709A0B273C20A5DFC212537 /* font_utils.h */,
+				57FE3EC3C36C94420C564F42 /* gif_load.h */,
+				D13E96D13DF8007CC6571B56 /* gif_utils.h */,
+				B442230DA094FAFC89B3370D /* string_utils.h */,
+			);
+			name = "src";
+			path = "../../../src";
+			sourceTree = "<group>";
+		};
+		D6DDA5B7C29895636B500EAE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E431233B503F5121D9254D0C /* cor_scoreboard.app */,
+			);
+			name = "Products";
+			sourceTree = "<group>";
+		};
+		EDA676F5D96166A18219DFEB /* Projects */ = {
+			isa = PBXGroup;
+			children = (
+				68380D2A54CF4FDFFD83C6DF /* example-common.xcodeproj */,
+				12E189F0FE89F11F27200D9F /* bgfx.xcodeproj */,
+				08A29302F4771A00DD213553 /* bimg_decode.xcodeproj */,
+				C2909A85AE3902B5D7CF1D34 /* bimg.xcodeproj */,
+				580F72C64422721FED0B4F0C /* bx.xcodeproj */,
+			);
+			name = "Projects";
+			path = ".";
+			sourceTree = "<group>";
+		};
+		228D4FD68EA2BD2C175F978D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A4AD5E5C90708F8039BEA0FC /* libexample-commonDebug.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8C07627BF8EE4C7101DD4EED /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1EC9F9CD0A46ED1033C3ED24 /* libbgfxDebug.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4294FF01AE08955F7752E26E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DC0860A3C80AA4B3B18D9AAC /* libbimg_decodeDebug.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3C313A2CA8182522B106279E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F6AA2C7DE27F74300B2FB42C /* libbimgDebug.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		129C925D7EAD3A0407FFCC43 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0742D1E3F3D5C68B5C9A2040 /* libbxDebug.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4A75ED09368599DA9F3EFEF8 /* cor_scoreboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7ED7CB93EA4F40E0B3C451F5 /* Build configuration list for PBXNativeTarget "cor_scoreboard" */;
+			buildPhases = (
+				C0A836072C21AB53F595BC68 /* Resources */,
+				1840A17A84B815C74D2D27DC /* Sources */,
+				B9AD9E4C25261399EE9A24AE /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CE77B4A53A8D22FCC349FC5C /* PBXTargetDependency */,
+				785AC6BAE441B1B0ED2FB32C /* PBXTargetDependency */,
+				CEF90CA43A6EA20103B8EF10 /* PBXTargetDependency */,
+				28849E6B946B89619D598BDD /* PBXTargetDependency */,
+				3EFAB0DEAA0B5985335DEBC4 /* PBXTargetDependency */,
+			);
+			name = "cor_scoreboard";
+			productInstallPath = "$(HOME)/Applications";
+			productName = "cor_scoreboard";
+			productReference = E431233B503F5121D9254D0C /* cor_scoreboard.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		__RootObject_ /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "cor_scoreboard" */;
+			compatibilityVersion = "Xcode 8.0";
+			hasScannedForEncodings = 1;
+			mainGroup = 96B0E3AD021F392D4B08F42C /* cor_scoreboard */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 228D4FD68EA2BD2C175F978D /* Products */;
+					ProjectRef = 68380D2A54CF4FDFFD83C6DF /* example-common.xcodeproj */;
+				},
+				{
+					ProductGroup = 8C07627BF8EE4C7101DD4EED /* Products */;
+					ProjectRef = 12E189F0FE89F11F27200D9F /* bgfx.xcodeproj */;
+				},
+				{
+					ProductGroup = 4294FF01AE08955F7752E26E /* Products */;
+					ProjectRef = 08A29302F4771A00DD213553 /* bimg_decode.xcodeproj */;
+				},
+				{
+					ProductGroup = 3C313A2CA8182522B106279E /* Products */;
+					ProjectRef = C2909A85AE3902B5D7CF1D34 /* bimg.xcodeproj */;
+				},
+				{
+					ProductGroup = 129C925D7EAD3A0407FFCC43 /* Products */;
+					ProjectRef = 580F72C64422721FED0B4F0C /* bx.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				4A75ED09368599DA9F3EFEF8 /* cor_scoreboard.app */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		A4AD5E5C90708F8039BEA0FC /* libexample-commonDebug.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "../../../thirdparty/bgfx/scripts/libexample-commonDebug.a";
+			remoteRef = A3D067008F93982438E1A9A0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1EC9F9CD0A46ED1033C3ED24 /* libbgfxDebug.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "../../../scripts/libbgfxDebug.a";
+			remoteRef = 0D13C317F9E70ACB22974AC7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		DC0860A3C80AA4B3B18D9AAC /* libbimg_decodeDebug.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "../../../thirdparty/bimg/scripts/libbimg_decodeDebug.a";
+			remoteRef = 630356AF4F059ABF388890B8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F6AA2C7DE27F74300B2FB42C /* libbimgDebug.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "../../../thirdparty/bimg/scripts/libbimgDebug.a";
+			remoteRef = BD72A0E3A947E896D2F62793 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0742D1E3F3D5C68B5C9A2040 /* libbxDebug.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "../../../thirdparty/bx/scripts/libbxDebug.a";
+			remoteRef = 13B40413FFF2AE8EA8758BC0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C0A836072C21AB53F595BC68 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1840A17A84B815C74D2D27DC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C1BA9E7FADA1607756F2C694 /* font.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+/* End PBXVariantGroup section */
+
+/* Begin PBXTargetDependency section */
+		CE77B4A53A8D22FCC349FC5C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libexample-commonDebug.a";
+			targetProxy = 3D8E28FC29515920D29E6A9C /* PBXContainerItemProxy */;
+		};
+		785AC6BAE441B1B0ED2FB32C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libbgfxDebug.a";
+			targetProxy = 674B7DE35320C5967CCF0493 /* PBXContainerItemProxy */;
+		};
+		CEF90CA43A6EA20103B8EF10 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libbimg_decodeDebug.a";
+			targetProxy = 9D0854B8890A98C8728D8EC1 /* PBXContainerItemProxy */;
+		};
+		28849E6B946B89619D598BDD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libbimgDebug.a";
+			targetProxy = 17AB5AAF0380A2622C2FE25E /* PBXContainerItemProxy */;
+		};
+		3EFAB0DEAA0B5985335DEBC4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libbxDebug.a";
+			targetProxy = 2D68BDB119A7672DC229445F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		4CFA714D384C493D216B864D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = ../../../scripts;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = cor_scoreboardDebug;
+			};
+			name = Debug;
+		};
+		863435A872B128EB9B2E29FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = ../../../scripts;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = cor_scoreboardRelease;
+			};
+			name = Release;
+		};
+		3A1DCE07A62E76AE2F8008EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_CPP_EXCEPTIONS = NO;
+				GCC_ENABLE_CPP_RTTI = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					__STDC_LIMIT_MACROS,
+					__STDC_FORMAT_MACROS,
+					__STDC_CONSTANT_MACROS,
+					_DEBUG,
+					"ENTRY_CONFIG_IMPLEMENT_MAIN=1",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					../../../thirdparty/bx/include/compat/osx,
+					../../../thirdparty/bx/include,
+					../../../thirdparty/bimg/include,
+					../../../thirdparty/bgfx/include,
+					../../../thirdparty/bgfx/3rdparty,
+					../../../thirdparty/bgfx/examples/common,
+				);
+				OBJROOT = obj/Debug/cor_scoreboard;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-ffast-math",
+					"-fomit-frame-pointer",
+					"-Wshadow",
+					"-Wfatal-errors",
+					"-msse2",
+					"-Wunused-value",
+					"-Wundef",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-ffast-math",
+					"-fomit-frame-pointer",
+					"-Wshadow",
+					"-Wfatal-errors",
+					"-msse2",
+					"-Wunused-value",
+					"-Wundef",
+				);
+				OTHER_LDFLAGS = (
+					"-framework Cocoa",
+					"-framework QuartzCore",
+					"-framework OpenGL",
+					"-weak_framework Metal",
+				);
+				SDKROOT = macosx;
+				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = static;
+				SYMROOT = ../../../scripts;
+				WARNING_CFLAGS = "-Wall";
+			};
+			name = Debug;
+		};
+		95372D0B01541FFCCA2B8C69 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_CPP_EXCEPTIONS = NO;
+				GCC_ENABLE_CPP_RTTI = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					__STDC_LIMIT_MACROS,
+					__STDC_FORMAT_MACROS,
+					__STDC_CONSTANT_MACROS,
+					NDEBUG,
+					"ENTRY_CONFIG_IMPLEMENT_MAIN=1",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					../../../thirdparty/bx/include/compat/osx,
+					../../../thirdparty/bx/include,
+					../../../thirdparty/bimg/include,
+					../../../thirdparty/bgfx/include,
+					../../../thirdparty/bgfx/3rdparty,
+					../../../thirdparty/bgfx/examples/common,
+				);
+				OBJROOT = obj/Release/cor_scoreboard;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-ffast-math",
+					"-fomit-frame-pointer",
+					"-Wshadow",
+					"-Wfatal-errors",
+					"-msse2",
+					"-Wunused-value",
+					"-Wundef",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-ffast-math",
+					"-fomit-frame-pointer",
+					"-Wshadow",
+					"-Wfatal-errors",
+					"-msse2",
+					"-Wunused-value",
+					"-Wundef",
+				);
+				OTHER_LDFLAGS = (
+					"-framework Cocoa",
+					"-framework QuartzCore",
+					"-framework OpenGL",
+					"-weak_framework Metal",
+				);
+				SDKROOT = macosx;
+				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = static;
+				SYMROOT = ../../../scripts;
+				WARNING_CFLAGS = "-Wall";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7ED7CB93EA4F40E0B3C451F5 /* Build configuration list for PBXNativeTarget "cor_scoreboard.app" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4CFA714D384C493D216B864D /* Debug */,
+				863435A872B128EB9B2E29FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "Debug";
+		};
+		1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "cor_scoreboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A1DCE07A62E76AE2F8008EE /* Debug */,
+				95372D0B01541FFCCA2B8C69 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "Debug";
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = __RootObject_ /* Project object */;
+}
