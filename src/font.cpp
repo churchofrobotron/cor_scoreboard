@@ -146,7 +146,7 @@ public:
     m_fontManager = new FontManager(512);
     m_textBufferManager = new TextBufferManager(m_fontManager);
 
-    m_fontRobotronTtf = loadTtf(m_fontManager, "font/ROBOTRON.ttf");
+    m_fontRobotronTtf = loadTtf(m_fontManager, "font/ROBOTRON.TTF");
     m_fontRobotron =
         m_fontManager->createFontByPixelSize(m_fontRobotronTtf, 0, 24);
     m_fontManager->preloadGlyph(
