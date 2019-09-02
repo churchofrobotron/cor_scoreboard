@@ -117,6 +117,15 @@ public:
             uint32_t _height) override {
     Args args(_argc, _argv);
 
+    if (getenv("COR_ID") == nullptr || getenv("COR_NAME") == nullptr) {
+      printf("Please set COR_ID and COR_NAME environment variables!");
+      exit(1);
+    }
+
+    m_eventId = getenv("COR_ID");
+    m_eventName = getenv("COR_NAME");
+
+
     m_width = _width;
     m_height = _height;
     m_debug = BGFX_DEBUG_NONE;
@@ -161,15 +170,15 @@ public:
     GroupSortFunc sortByScore = [](const DeathFace &a, const DeathFace &b) {
       return a.score != b.score ? a.score > b.score : a.filename < b.filename;
     };
-    GroupFilterFunc filterByEvent = [](const DeathFace &a) {
-      return a.location == "AFRU";
+    GroupFilterFunc filterByEvent = [this](const DeathFace &a) {
+      return a.location == m_eventId;
     };
     GroupSortFunc sortByDate = [](const DeathFace &a, const DeathFace &b) {
       return a.date != b.date ? a.date > b.date : a.filename < b.filename;
     };
 
     initGroup(&m_scores[0], "Most Recent", sortByDate);
-    initGroup(&m_scores[1], "Teardown 2019", sortByScore, filterByEvent);
+    initGroup(&m_scores[1], m_eventName, sortByScore, filterByEvent);
     initGroup(&m_scores[2], "All Time", sortByScore);
     loadScores(true);
   }
@@ -400,6 +409,9 @@ public:
   int64_t m_timeOffset;
 
   ScoreGroup m_scores[NUM_GROUPS];
+
+  std::string m_eventId;
+  std::string m_eventName;
 };
 
 } // namespace
