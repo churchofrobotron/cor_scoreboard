@@ -92,8 +92,7 @@ ifeq ($(config),release)
   LIBDEPS            += ../../../thirdparty/bgfx/scripts/libexample-commonRelease.a ../../../scripts/libbgfxRelease.a ../../../thirdparty/bimg/scripts/libbimg_decodeRelease.a ../../../thirdparty/bimg/scripts/libbimgRelease.a ../../../thirdparty/bx/scripts/libbxRelease.a
   LDDEPS             += ../../../thirdparty/bgfx/scripts/libexample-commonRelease.a ../../../scripts/libbgfxRelease.a ../../../thirdparty/bimg/scripts/libbimg_decodeRelease.a ../../../thirdparty/bimg/scripts/libbimgRelease.a ../../../thirdparty/bx/scripts/libbxRelease.a
   LDRESP              =
-  LIBS               += $(LDDEPS) -lrt -ldl -lX11
-  # -lrt -ldl -lX11 -lbrcmGLESv2 -lbrcmEGL -lbcm_host -lvcos -lvchiq_arm -lpthread
+  LIBS               += $(LDDEPS) -lrt -ldl -lX11 -lGL
   EXTERNAL_LIBS      +=
   LINKOBJS            = $(OBJECTS)
   LINKCMD             = $(CXX) -o $(TARGET) $(LINKOBJS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
